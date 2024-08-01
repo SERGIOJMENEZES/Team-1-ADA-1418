@@ -9,4 +9,5 @@ class Vendedor extends Pessoa {
     }
 
     public String getLoja() { return loja; }
+
 }
