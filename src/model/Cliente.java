@@ -1,6 +1,6 @@
 package model;
 
-class Cliente extends Pessoa {
+public class Cliente extends Pessoa {
     //Atributos
     private final int id;
     private String senha;

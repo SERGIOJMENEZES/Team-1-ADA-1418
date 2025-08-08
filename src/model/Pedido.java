@@ -20,10 +20,15 @@ public class Pedido {
     private double valorTotal;
     private StatusPedido status;
     private LocalDateTime dataPedido;
+    private final Cliente cliente;
 
-    public Pedido(ArrayList<Produto> produtos, double valorTotal) {
+    public Pedido(ArrayList<Produto> produtos, double valorTotal, Cliente cliente) {
         if (produtos == null || produtos.isEmpty()) {
             throw new IllegalArgumentException("A lista de produtos não pode ser nula ou vazia.");
+        }
+
+        if (cliente == null) {
+            throw new IllegalArgumentException("O cliente não pode ser nulo.");
         }
 
         this.id = IdGenerator.gerarId(PREFIXO, contadorId);
@@ -31,12 +36,14 @@ public class Pedido {
         this.valorTotal = valorTotal;
         this.status = StatusPedido.REALIZADO;
         this.dataPedido = LocalDateTime.now();
+        this.cliente = cliente;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Pedido #").append(id).append("\n");
+        sb.append("Cliente: ").append(cliente.nome).append("\n");
         sb.append("Status: ").append(status).append("\n");
         sb.append("Data: ").append(dataPedido).append("\n");
         sb.append("Produtos:\n");
@@ -76,5 +83,9 @@ public class Pedido {
 
     public LocalDateTime getDataPedido() {
         return dataPedido;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
     }
 }

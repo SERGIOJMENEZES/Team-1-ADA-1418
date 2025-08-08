@@ -12,11 +12,14 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         ProdutoController produtoController = new ProdutoController();
-        PedidoController pedidoController = new PedidoController(produtoController);
+        PedidoController pedidoController = new PedidoController();
 
         // Criar produtos
         Produto produto1 = produtoController.criarProduto("Notebook", "Ultrafino", 3500.00, Categoria.ELETRONICOS, Condicao.NOVO);
         Produto produto2 = produtoController.criarProduto("Smartphone", "Tela AMOLED", 2500.00, Categoria.ELETRONICOS, Condicao.NOVO);
+
+        // Criar cliente
+        Cliente cliente1 = new Cliente(1, "Paula", "01234567899", "emaildapaula@email.com", "99999999999", "12345");
 
         // Exibir detalhes dos produtos
         produtoController.exibirDetalhes(produto1);
@@ -40,15 +43,21 @@ public class Main {
         produtos.add(produto2);
 
         // Criar pedido
-        Pedido pedido = pedidoController.criarPedido(produtos);
+        Pedido pedido1 = pedidoController.criarPedido(produtos, cliente1);
 
         // Exibir detalhes do pedido criado
-        pedidoController.exibirDetalhes(pedido);
+        pedidoController.exibirDetalhes(pedido1);
 
         // Alterar status do pedido
-        pedidoController.alterarStatusPedido(pedido, StatusPedido.ENVIADO);
+        pedidoController.alterarStatusPedido(pedido1, StatusPedido.ENVIADO);
 
         // Alterar status do pedido
-        pedidoController.alterarStatusPedido(pedido, StatusPedido.ENTREGUE);
+        pedidoController.alterarStatusPedido(pedido1, StatusPedido.ENTREGUE);
+
+        // Buscar pedido por cliente
+        ArrayList<Pedido> pedidosPorCliente = pedidoController.buscarPedidosPorCliente(cliente1);
+        for (Pedido pedido : pedidosPorCliente) {
+            pedidoController.exibirDetalhes(pedido);
+        }
     }
 }

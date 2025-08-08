@@ -1,5 +1,6 @@
 package controller;
 
+import model.Cliente;
 import model.Pedido;
 import model.Produto;
 import model.enums.StatusPedido;
@@ -11,11 +12,6 @@ import java.util.HashMap;
 public class PedidoController {
 
     private final HashMap<String, Pedido> pedidos = new HashMap<>();
-    private final ProdutoController produtoController;
-
-    public PedidoController(ProdutoController produtoController) {
-        this.produtoController = produtoController;
-    }
 
     /**
      * Cria um pedido a partir de uma lista de produtos.
@@ -23,11 +19,17 @@ public class PedidoController {
      * Calcula o valor total e cria o pedido com a lista informada.
      *
      * @param produtos lista de produtos a serem incluídos no pedido
+     * @param cliente cliente que realizou o pedido
      * @return o pedido criado ou null caso a lista seja inválida ou contenha produtos indisponíveis
      */
-    public Pedido criarPedido(ArrayList<Produto> produtos) {
+    public Pedido criarPedido(ArrayList<Produto> produtos, Cliente cliente) {
         if (produtos == null || produtos.isEmpty()) {
             System.out.println("Nenhum produto válido foi selecionado. Pedido não criado.");
+            return null;
+        }
+
+        if (cliente == null) {
+            System.out.println("Nenhum cliente relacionado ao pedido. Pedido não criado.");
             return null;
         }
 
@@ -43,7 +45,7 @@ public class PedidoController {
             valorTotal += produto.getPreco();
         }
 
-        Pedido pedido = new Pedido(produtos, valorTotal);
+        Pedido pedido = new Pedido(produtos, valorTotal, cliente);
         pedidos.put(pedido.getId(), pedido);
         System.out.println("Pedido criado com sucesso: " + pedido.getId());
 
@@ -121,6 +123,24 @@ public class PedidoController {
 
         for (Pedido pedido : pedidos.values()) {
             if (pedido.getDataPedido().toLocalDate().equals(data)) {
+                pedidosEncontrados.add(pedido);
+            }
+        }
+
+        return pedidosEncontrados;
+    }
+
+    /**
+     * Busca todos os pedidos realizados por um cliente.
+     *
+     * @param cliente o cliente para filtrar os pedidos
+     * @return lista de pedidos realizados na data informada
+     */
+    public ArrayList<Pedido> buscarPedidosPorCliente(Cliente cliente) {
+        ArrayList<Pedido> pedidosEncontrados = new ArrayList<>();
+
+        for (Pedido pedido : pedidos.values()) {
+            if (pedido.getCliente().equals(cliente)) {
                 pedidosEncontrados.add(pedido);
             }
         }
