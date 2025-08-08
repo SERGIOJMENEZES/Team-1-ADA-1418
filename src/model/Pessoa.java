@@ -1,4 +1,4 @@
-package Team
+package Team;
 
 //super classe pessoa, é a classe base para pessoa
 public class Pessoa {
