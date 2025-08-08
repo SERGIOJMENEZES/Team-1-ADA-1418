@@ -1,5 +1,6 @@
-package Team//classe cliente é a subclasse que herda os dados da classe pessoa
+package model;
 
+//classe cliente é a subclasse que herda os dados da classe pessoa
 class Cliente extends Pessoa {
     private String senha;
 

@@ -1,3 +1,5 @@
+package model.enums;
+
 public enum Categoria {
 
     ELETRONICOS,

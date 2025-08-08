@@ -1,3 +1,9 @@
+package model;
+
+import model.enums.Categoria;
+import model.enums.Condicao;
+import utils.IdGenerator;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**

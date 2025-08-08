@@ -1,3 +1,9 @@
+package controller;
+
+import model.enums.Categoria;
+import model.enums.Condicao;
+import model.Produto;
+
 import java.util.ArrayList;
 
 public class ProdutoController {
