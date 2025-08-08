@@ -1,3 +1,8 @@
+package model;
+
+import model.enums.StatusPedido;
+import utils.IdGenerator;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
