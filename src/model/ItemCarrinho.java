@@ -1,6 +1,6 @@
 package model;
 
-class ItemCarrinho {
+public class ItemCarrinho {
     private Produto produto;
     private int quantidade;
 
@@ -21,7 +21,7 @@ class ItemCarrinho {
     }
 
     public double subTotal() {
-        return produto.getValor() * quantidade;
+        return produto.getPreco() * quantidade;
     }
 
     @Override

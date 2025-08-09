@@ -1,6 +1,10 @@
-package model.enums;
+package model;
 
-class Carrinho {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Carrinho {
+
     private Cliente cliente;
     private List<ItemCarrinho> itens;
 
@@ -8,8 +12,19 @@ class Carrinho {
         this.itens = new ArrayList<>();
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<ItemCarrinho> getItens() {
+        return itens;
+    }
+
     public void adicionarItem(Produto produto, int quantidade) {
-        // Se o produto já existir no carrinho, soma quantidade
         for (ItemCarrinho item : itens) {
             if (item.getProduto().equals(produto)) {
                 item.atualizarQuantidade(item.getQuantidade() + quantidade);
