@@ -4,7 +4,7 @@ class Carrinho {
     private Cliente cliente;
     private List<ItemCarrinho> itens;
 
-    public CarrinhoDeCompras() {
+    public Carrinho() {
         this.itens = new ArrayList<>();
     }
 
