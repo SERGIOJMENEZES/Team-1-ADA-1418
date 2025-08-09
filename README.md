@@ -11,9 +11,7 @@ Reformulamos o desafio proposto no LMS, criando um projeto com requisitos equiva
 - associar um produto (com seus Vendedores e Clientes) as suas categorias e tipos
 - permita pesquisar Produto cadastrados pelo nome, desconsiderando letras maiúsculas e minúsculas
 - Carrinho e ItemCarrinho
-
-Utilize os conceitos de programação orientada a objetos vistos nas aulas como encapsulamento, herança, polimorfismos e classes abstratas.
-O projeto será desenvolvido em grupos de até 4 integrantes, a entrega será feita via repositório GIT. A avaliação será feita considerando os commits individuais, portanto é importante que todos colaborem no desenvolvimento do projeto. "
+"
 
 ## Descrição
 Este projeto é uma implementação simples de um sistema de Ecommerce utilizando os conceitos fundamentais de Programação Orientada a Objetos (POO) em Java. O objetivo é organizar e gerenciar informações de produtos, clientes e pedidos, simulando funcionalidades básicas de uma loja online.
