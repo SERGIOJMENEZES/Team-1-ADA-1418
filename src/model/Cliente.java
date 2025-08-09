@@ -1,7 +1,7 @@
 package model;
 
 //classe cliente é a subclasse que herda os dados da classe pessoa
-class Cliente extends Pessoa {
+public class Cliente extends Pessoa {
     private String senha;
 
     public Cliente (String nome, String cpf, String email, String telefone ,String senha ){

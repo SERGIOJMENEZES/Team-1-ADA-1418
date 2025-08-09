@@ -1,8 +1,8 @@
 package controller;
 
+import model.Produto;
 import model.enums.Categoria;
 import model.enums.Condicao;
-import model.Produto;
 
 import java.util.ArrayList;
 
@@ -15,6 +15,12 @@ public class ProdutoController {
      * Também imprime uma mensagem confirmando a criação.
      */
     public Produto criarProduto(String nome, String descricao, double preco, Categoria categoria, Condicao condicao) {
+        if (categoria == null) {
+            throw new IllegalArgumentException("Categoria não pode ser nula.");
+        }
+        if (condicao == null) {
+            throw new IllegalArgumentException("Condição não pode ser nula.");
+        }
         Produto produto = new Produto(nome, descricao, preco, categoria, condicao);
         produtos.add(produto);
         System.out.println("Produto criado: " + produto.getNome());
@@ -30,7 +36,6 @@ public class ProdutoController {
             System.out.println("Produto inválido para exibição.");
             return;
         }
-
         System.out.println(produto);
     }
 
@@ -43,7 +48,6 @@ public class ProdutoController {
             System.out.println("Produto inválido.");
             return;
         }
-
         produto.setAtivo(true);
         System.out.println("Produto ativado: " + produto.getNome());
     }
@@ -57,7 +61,6 @@ public class ProdutoController {
             System.out.println("Produto inválido.");
             return;
         }
-
         produto.setAtivo(false);
         System.out.println("Produto inativado: " + produto.getNome());
     }
@@ -96,7 +99,7 @@ public class ProdutoController {
         if (!sucesso) {
             System.out.println("Não foi possível repor o estoque: quantidade inválida.");
         } else {
-            System.out.println("Reposiçao realizada com sucesso. Estoque atual do produto: " + produto.getEstoque());
+            System.out.println("Reposição realizada com sucesso. Estoque atual do produto: " + produto.getEstoque());
         }
     }
 
@@ -110,8 +113,14 @@ public class ProdutoController {
                 return produto;
             }
         }
-
         System.out.println("Nenhum produto com o ID " + id + " foi encontrado.");
         return null;
+    }
+
+    /**
+     * Retorna a lista de produtos cadastrados.
+     */
+    public ArrayList<Produto> getProdutos() {
+        return produtos;
     }
 }
